@@ -104,14 +104,14 @@ const Hero = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-medium">
+              <div className="inline-flex items-center bg-secondary bg-opacity-100 text-textPrimary px-3 py-1 rounded-full text-sm font-medium">
                 <Star className="h-4 w-4 mr-1" />
                 #1 Interactive Learning Platform
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold text-textPrimary leading-tight">
                 Master High School
                 <span className="text-primary"> Sciences</span> with
-                <span className="text-secondary"> Interactive</span> Learning
+                <span className="text-accent"> Interactive</span> Learning
               </h1>
               <p className="text-xl text-textSecondary leading-relaxed">
                 Experience the future of education with our immersive courses in Math, Physics, Chemistry, and Biology. 
@@ -124,7 +124,7 @@ const Hero = () => {
               <button className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl">
                 Start Learning Free
               </button>
-              <button className="flex items-center justify-center border-2 border-surface text-textSecondary px-8 py-4 rounded-xl font-semibold hover:border-primary hover:text-primary transition-all duration-200">
+              <button className="bg-secondary flex items-center justify-center border-2 border-surface text-textSecondary px-8 py-4 rounded-xl font-semibold hover:border-primary hover:text-primary transition-all duration-200">
                 <Play className="h-5 w-5 mr-2" />
                 Watch Demo
               </button>
@@ -141,14 +141,14 @@ const Hero = () => {
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <Award className="h-6 w-6 text-secondary mr-2" />
+                  <Award className="h-6 w-6 text-success mr-2" />
                   <span className="text-2xl font-bold text-textPrimary">95%</span>
                 </div>
                 <p className="text-textSecondary">Success Rate</p>
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <Star className="h-6 w-6 text-warning mr-2" />
+                  <Star className="h-6 w-6 text-accent mr-2" />
                   <span className="text-2xl font-bold text-textPrimary">4.9</span>
                 </div>
                 <p className="text-textSecondary">Student Rating</p>

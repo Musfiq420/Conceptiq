@@ -293,7 +293,9 @@ const CourseSelection = () => {
                     <button
                       type="button"
                       onClick={clearAllFilters}
-                      className="text-sm font-medium text-primary hover:text-primary/80"
+                      className="text-sm font-medium text-accent hover:text-accent/80"
+                      // className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md shadow-sm text-white bg-accent hover:bg-accent/90"
+
                     >
                       Clear all
                     </button>
@@ -663,7 +665,7 @@ const CourseSelection = () => {
                   <button
                     type="button"
                     onClick={clearAllFilters}
-                    className="ml-2 text-sm font-medium text-primary hover:text-primary/80"
+                    className="ml-2 text-sm font-medium text-accent hover:text-accent/80"
                   >
                     Clear all
                   </button>

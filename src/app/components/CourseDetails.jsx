@@ -18,7 +18,7 @@ const mockCourse = {
   language: 'English',
   rating: 4.8,
   students: 1245,
-  thumbnail: 'https://via.placeholder.com/800x450',
+  thumbnail: `https://picsum.photos/800/450`,
   instructor: 'Sarah Johnson',
   featured: true
 };
@@ -116,110 +116,130 @@ const CourseDetails = () => {
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left Content */}
           <div className="flex-1">
+<div className="flex items-center gap-2 text-sm text-primary mb-2">
+              <span>{course.category}</span>
+              <span>•</span>
+              <span>{course.subcategory}</span>
+            </div>
 
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                <span>{course.category}</span>
-                <span>•</span>
-                <span>{course.subcategory}</span>
-              </div>
-              
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{course.title}</h1>
+            <h1 className="text-3xl font-bold text-textPrimary mb-4">
+              {course.title}
+            </h1>
 
-              {/* <h2 className="text-xl font-semibold mb-4">About this course</h2> */}
-              <p className="text-gray-700 mb-4">
-                {showFullDescription 
-                  ? course.description + ' '.repeat(200) // Simulating longer description
-                  : course.description.substring(0, 200) + (course.description.length > 200 ? '...' : '')}
-              </p>
-              {course.description.length > 200 && (
-                <button 
-                  onClick={() => setShowFullDescription(!showFullDescription)}
-                  className="text-primary hover:underline text-sm font-medium"
-                >
-                  {showFullDescription ? 'Show less' : 'Show more'}
-                </button>
-              )}
-              
-              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
-                <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <span>{course.rating}</span>
-                  <span className="text-gray-400">({Math.floor(course.students / 100) / 10}k+)</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Users className="w-4 h-4 text-gray-400" />
-                  <span>{course.students.toLocaleString()} students</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4 text-gray-400" />
-                  <span>{course.duration} weeks • {course.duration * 3} hours</span>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 font-medium">
-                  {course.instructor.split(' ').map(n => n[0]).join('')}
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Created by {course.instructor}</p>
-                  <p className="text-xs text-gray-500">Senior Instructor</p>
-                  
-                </div>
-                
-              </div>
+            <img
+              src={course.thumbnail}
+              alt={course.title}
+              className="w-full object-cover rounded-lg border border-surface"
+            />
 
-            
-            {/* Course Info */}
-            <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-              
-              
+            <p className="text-textSecondary mb-4">
+              {showFullDescription
+                ? course.description + " ".repeat(200)
+                : course.description.substring(0, 200) +
+                  (course.description.length > 200 ? "..." : "")}
+            </p>
+            {course.description.length > 200 && (
+              <button
+                onClick={() => setShowFullDescription(!showFullDescription)}
+                className="text-accent hover:underline text-sm font-medium"
+              >
+                {showFullDescription ? "Show less" : "Show more"}
+              </button>
+            )}
+
+            {/* Stats */}
+            <div className="flex flex-wrap items-center gap-4 text-sm text-textSecondary mb-6">
+              <div className="flex items-center gap-1">
+                <Star className="w-4 h-4 text-secondary fill-current" />
+                <span>{course.rating}</span>
+                <span className="text-textSecondary/70">
+                  ({Math.floor(course.students / 100) / 10}k+)
+                </span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Users className="w-4 h-4 text-info" />
+                <span>{course.students.toLocaleString()} students</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Clock className="w-4 h-4 text-warning" />
+                <span>
+                  {course.duration} weeks • {course.duration * 3} hours
+                </span>
+              </div>
+            </div>
+
+            {/* Instructor */}
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-textPrimary font-medium">
+                {course.instructor.split(" ").map((n) => n[0]).join("")}
+              </div>
+              <div>
+                <p className="text-sm font-medium">
+                  Created by {course.instructor}
+                </p>
+                <p className="text-xs text-textSecondary">Senior Instructor</p>
+              </div>
+            </div>
+
+            {/* What you'll learn */}
+            <div className="bg-background rounded-lg shadow-sm p-6 mb-6 border border-surface">
               <div className="mt-0 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-medium text-gray-900 mb-2">What you'll learn</h3>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <h3 className="font-medium text-textPrimary mb-2">
+                    What you'll learn
+                  </h3>
+                  <ul className="space-y-2 text-sm text-textSecondary">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
                       <span>Build modern React applications with hooks</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span>Master state management with Context API and Redux</span>
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span>
+                        Master state management with Context API and Redux
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span>Optimize performance with useMemo and useCallback</span>
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span>
+                        Optimize performance with useMemo and useCallback
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span>Test your React applications with Jest and React Testing Library</span>
+                      <CheckCircle className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span>
+                        Test your React applications with Jest and RTL
+                      </span>
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
-                  <h3 className="font-medium text-gray-900 mb-2">This course includes:</h3>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <h3 className="font-medium text-textPrimary mb-2">
+                    This course includes:
+                  </h3>
+                  <ul className="space-y-2 text-sm text-textSecondary">
                     <li className="flex items-center gap-2">
-                      <PlayCircle className="w-4 h-4 text-gray-500" />
+                      <PlayCircle className="w-4 h-4 text-primary" />
                       <span>{totalLessons} hours on-demand video</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <Award className="w-4 h-4 text-gray-500" />
+                      <Award className="w-4 h-4 text-secondary" />
                       <span>Certificate of completion</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <BookOpen className="w-4 h-4 text-gray-500" />
+                      <BookOpen className="w-4 h-4 text-info" />
                       <span>10 articles and 5 downloadable resources</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-gray-500" />
+                      <Clock className="w-4 h-4 text-warning" />
                       <span>Full lifetime access</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-            
+
             {/* Curriculum */}
             <div className="bg-white rounded-lg shadow-sm p-6">
               <h2 className="text-xl font-semibold mb-6">Course Content</h2>
@@ -323,8 +343,8 @@ const CourseDetails = () => {
                   )}
                 </div>
                 
-                <button className="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3 px-4 rounded-md mb-4 transition-colors">
-                  {completedLessons > 0 ? 'Continue Learning' : 'Enroll Now'}
+                <button className="w-full bg-accent hover:bg-accent/90 text-background font-medium py-3 px-4 rounded-md mb-4 transition-colors">
+                  {completedLessons > 0 ? "Continue Learning" : "Enroll Now"}
                 </button>
                 
                 <div className="text-center text-sm text-gray-600 mb-4">
@@ -347,25 +367,25 @@ const CourseDetails = () => {
                 </div>
               </div>
               {/* Instructor */}
-              <div className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-                <h3 className="font-medium text-gray-900 mb-4">Instructor</h3>
+              <div className="bg-background rounded-lg shadow-sm p-6 border border-surface hover:shadow-md transition-shadow duration-300">
+                <h3 className="font-medium text-textPrimary mb-4">Instructor</h3>
                 <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-600 hover:bg-gray-300 transition-colors cursor-pointer">
-                    {course.instructor.split(' ').map(n => n[0]).join('')}
+                  <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center text-2xl font-bold text-textPrimary hover:bg-secondary/80 transition-colors cursor-pointer">
+                    {course.instructor.split(" ").map((n) => n[0]).join("")}
                   </div>
                   <div>
-                    <h4 className="font-medium">{course.instructor}</h4>
-                    <p className="text-sm text-gray-600 mb-2">Senior Instructor</p>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                    <h4 className="font-medium text-textPrimary">{course.instructor}</h4>
+                    <p className="text-sm text-textSecondary mb-2">Senior Instructor</p>
+                    <div className="flex items-center gap-2 text-sm text-textSecondary">
+                      <Star className="w-4 h-4 text-secondary fill-current" />
                       <span>{course.rating} Instructor Rating</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Users className="w-4 h-4 text-gray-400" />
+                    <div className="flex items-center gap-2 text-sm text-textSecondary">
+                      <Users className="w-4 h-4 text-info" />
                       <span>{Math.floor(course.students / 1000)}k+ Students</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Award className="w-4 h-4 text-gray-400" />
+                    <div className="flex items-center gap-2 text-sm text-textSecondary">
+                      <Award className="w-4 h-4 text-primary" />
                       <span>5 Courses</span>
                     </div>
                   </div>

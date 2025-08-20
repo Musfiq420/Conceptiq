@@ -32,16 +32,17 @@ const CourseCard = ({ course, onBookmarkToggle }) => {
           />
         </button>
         {course.featured && (
-          <div className="absolute top-3 left-3 bg-yellow-400 text-yellow-900 text-xs font-semibold px-2 py-1 rounded">
+          <div className="absolute top-3 left-3 bg-accent text-white text-xs font-semibold px-2 py-1 rounded">
             Featured
           </div>
+          
         )}
       </div>
 
       {/* Course Info */}
       <div className="p-5 flex-1 flex flex-col">
         <div className="flex justify-between items-start mb-2">
-          <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
+          <span className="px-3 py-1 bg-secondary/30 text-textSecondary/80 text-xs font-medium rounded-full">
             {course.category}
           </span>
           <span className="text-sm font-medium text-gray-900">
